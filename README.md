@@ -20,11 +20,21 @@ With the infrastructure automatically provisioned using IaC and CI/CD, you provi
 
 ## Setup
 
-Prior to setting up the automated deployment pipeline, you need to setup Terraform so that it can used S3 for storage of shared state.
+### Install local developer dependencies
+
+These are needed to do development, and will also be necessary for doing some setup prior to configuring the CI/CD pipeline:
+
+* Install [Terraform](https://www.terraform.io/downloads.html). (Tested with version `0.12.19`.)
+* (Optional) Install and configure [AWS CLI](https://aws.amazon.com/cli/). (Tested with version `1.16.304`.)
+
+### Create bucket for Terraform shared state storage
+
+Prior to setting up the automated deployment pipeline, you need to setup Terraform so that it can used S3 for storage of shared state. This will enable everyone working on your project to contribute infrastructure changes.
+
+Though the bucket will be managed by Terraform, it cannot be created by Terraform because Terraform is dependent on the shared state that will be stored in the bucket; it's a catch-22. The workaround is to first create the S3 bucket, the initialize Terraform (creating the shared state), and afterwards import the bucket into Terraform. 
 
 1. Install developer dependencies
-    - Install [Terraform](https://www.terraform.io/downloads.html). (Tested with version `0.12.19`.)
-    - (Optional) Install and configure [AWS CLI](https://aws.amazon.com/cli/). (Tested with version `1.16.304`.)
+
 1. Manually create an S3 bucket, which will be used for storing Terraform state, as well as input and output data.
     - E.g., using AWS CLI:
     ```sh
@@ -63,9 +73,7 @@ Prior to setting up the automated deployment pipeline, you need to setup Terrafo
       aws s3 ls s3://my-bucket/terraform/storage/terraform.tfstate
       ```
 
-You now have an S3 bucket that will hold Terraform state that will be shared with anyone else working on your project.
-
-It's time to setup CI/CD using Jenkins:
+### Setup CI/CD using Jenkins
 
 TODO
 
