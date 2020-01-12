@@ -39,41 +39,41 @@ Though the bucket will be managed by Terraform, it cannot be created by Terrafor
 
 1. Manually create an S3 bucket, which will be used for storing Terraform state, as well as input and output data.
     - E.g., using AWS CLI:
-    ```sh
-    aws s3 mb s3://my-bucket --region us-east-1
-    ```
+      ```sh
+      aws s3 mb s3://my-bucket --region us-east-1
+      ```
 1. Import the bucket to be under Terraform control
     1. Open terminal, and change directory: `cd storage/terraform`
     1. Initialize Terraform locally:
-    ```sh
-    terraform init \
-        -backend-config="bucket=my-bucket" \
-        -backend-config="region=us-east-1"
-    ```
+      ```sh
+      terraform init \
+          -backend-config="bucket=my-bucket" \
+          -backend-config="region=us-east-1"
+      ```
     1. Import the bucket you just created so that it is managed by Terraform:
-    ```sh
-    terraform import \
-        -var="bucket=my-bucket" \
-        -var="region=us-east-1" \
-        aws_s3_bucket.bucket my-bucket
-    ```
+      ```sh
+      terraform import \
+          -var="bucket=my-bucket" \
+          -var="region=us-east-1" \
+          aws_s3_bucket.bucket my-bucket
+      ```
     1. (Recommended) Confirm Terraform is correctly setup by running plan:
-    ```sh
-    terraform plan \
-        -var="region=us-east-1" \
-        -var="bucket=my-bucket"
-    ```
+      ```sh
+      terraform plan \
+          -var="region=us-east-1" \
+          -var="bucket=my-bucket"
+      ```
     If successful, you'll see a view that shows which changes will be made. To apply them now:
-    ```sh
-    terraform apply -auto-approve \
-        -var="region=us-east-1" \
-        -var="bucket=my-bucket"
-    ```
+      ```sh
+      terraform apply -auto-approve \
+          -var="region=us-east-1" \
+          -var="bucket=my-bucket"
+      ```
     1. (Recommended) Confirm Terraform shared state was created within the bucket.
       - E.g., using AWS CLI:
-      ```sh
-      aws s3 ls s3://my-bucket/terraform/storage/terraform.tfstate
-      ```
+        ```sh
+        aws s3 ls s3://my-bucket/terraform/storage/terraform.tfstate
+        ```
 
 ### Setup CI/CD using Jenkins
 
