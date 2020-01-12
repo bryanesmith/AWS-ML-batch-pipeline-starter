@@ -1,7 +1,7 @@
 # AWS ML batch pipeline starter
 ## Overview
 
-Starter for AWS serverless-based pipeline for a batch model, supporting ECS or Kubernetes for model execution, and Spark running on EMR for ETL.
+Starter for end-to-end AWS serverless technology-based pipeline for a batch model, supporting ECS or Kubernetes for model execution, and Spark running on EMR for ETL.
 
 With the infrastructure automatically provisioned using IaC and CI/CD, you provide an implementation of the model, ETL, and validation using starter code, and changes will automatically deploy to your cluster.
 
