@@ -5,6 +5,16 @@ pipeline {
   }
 
   stages {
+
+    stage('Configuration') {
+      steps {
+        def dockerHome = tool 'MasterDocker'
+        sh 'echo $PATH'
+        env.PATH = "${dockerHome}:${env.PATH}"
+        sh 'echo $PATH'
+      }
+    }
+
     // - - - - - - - - - - - - - - - - - - - - - - - - - - -
     stage('Checkout') {
       steps {
