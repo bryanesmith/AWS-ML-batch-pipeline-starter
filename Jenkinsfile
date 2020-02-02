@@ -1,7 +1,8 @@
 pipeline {
 
-  // TODO: Docker agent
-  agent any
+  agent {
+    docker { image 'hashicorp/terraform' }
+  }
 
   stages {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - -
