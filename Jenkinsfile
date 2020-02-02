@@ -1,7 +1,7 @@
 pipeline {
   agent any
 
-  steps {
+  stages {
     stage('Provision Storage') {
       steps {
         sh '''
