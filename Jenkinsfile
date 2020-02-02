@@ -8,7 +8,6 @@ pipeline {
           echo "Testing"
           pwd
         '''
-        sh 'ls -h'
       }
     }
   }
