@@ -1,4 +1,6 @@
 pipeline {
+
+  // TODO: Docker agent
   agent any
 
   stages {
@@ -13,10 +15,8 @@ pipeline {
     stage('Provision Storage') {
       steps {
         sh '''
-          echo "Testing #2"
-        '''
-        sh '''
-          pwd
+          echo "Testing #3"
+          terraform -v
         '''
       }
     }
