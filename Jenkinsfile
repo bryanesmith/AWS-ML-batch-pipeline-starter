@@ -7,10 +7,9 @@ pipeline {
   stages {
 
     stage('Configuration') {
+      def dockerHome = tool 'MasterDocker'
+      env.PATH = "${dockerHome}:${env.PATH}"
       steps {
-        def dockerHome = tool 'MasterDocker'
-        sh 'echo $PATH'
-        env.PATH = "${dockerHome}:${env.PATH}"
         sh 'echo $PATH'
       }
     }
