@@ -5,7 +5,9 @@ pipeline {
     stage('Provision Storage') {
       steps {
         sh '''
-          echo "Testing"
+          echo "Testing #2"
+        '''
+        sh '''
           pwd
         '''
       }
