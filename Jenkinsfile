@@ -6,16 +6,18 @@ pipeline {
 
   stages {
 
-    stage('Configuration') {
-      steps {
-        sh 'echo $PATH'
-      }
-    }
-
     // - - - - - - - - - - - - - - - - - - - - - - - - - - -
     stage('Checkout') {
       steps {
         checkout scm
+      }
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    stage('Configuration') {
+      steps {
+        sh 'DEBUG: '
+        sh 'echo $PATH'
       }
     }
 
