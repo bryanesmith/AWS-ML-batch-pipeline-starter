@@ -19,7 +19,7 @@ pipeline {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - -
     stage('Configuration') {
       steps {
-        sh 'DEBUG: '
+        sh 'echo "DEBUG:"'
         sh 'echo $PATH'
       }
     }
